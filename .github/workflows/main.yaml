@@ -58,7 +58,7 @@ jobs:
           echo "Listing generated Firebase options files..."
           ls -al lib
 
-      - name: 📦 Install Dependencies
+      - name: Install Dependencies
         run: flutter pub get
 
       - name: Verify Firebase Options
@@ -67,13 +67,13 @@ jobs:
           ls -al lib/firebase_options_dev.dart
           ls -al lib/firebase_options_prod.dart
 
-      - name: 🕵️ Analyze
+      - name: Analyze
         run: flutter analyze lib test
 
-      - name: 🧪 Run Tests
+      - name: Run Tests
         run: very_good test -j 4 --coverage --test-randomize-ordering-seed random
 
-      - name: 📊 Check Code Coverage
+      - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v3
         with:
           path: coverage/lcov.info
