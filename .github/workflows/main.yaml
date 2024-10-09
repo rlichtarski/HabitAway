@@ -53,11 +53,11 @@ jobs:
           echo "Generating Firebase options files..."
           dart scripts/generate_firebase_options.dart
 
-      - name: Cache Generated Firebase Options
-        uses: actions/cache@v2
+      - name: Upload Firebase Options
+        uses: actions/upload-artifact@v3
         with:
-          path: lib/
-          key: ${{ runner.os }}-firebase-options-${{ hashFiles('lib/firebase_options_dev.dart', 'lib/firebase_options_prod.dart') }}
+          name: firebase-options
+          path: lib/firebase_options_*.dart
 
       - name: List lib/ Directory
         run: ls -al lib
@@ -69,6 +69,11 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
+
+      - name: Download Firebase Options
+        uses: actions/download-artifact@v3
+        with:
+          name: firebase-options
 
       - name: 🐦 Setup Flutter
         uses: subosito/flutter-action@v2
