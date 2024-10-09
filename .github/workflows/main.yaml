@@ -58,6 +58,9 @@ jobs:
           echo "Listing generated Firebase options files..."
           ls -al lib
 
+      - name: Format Generated Files
+        run: dart format lib
+
       - name: Install Dependencies
         run: flutter pub get
 

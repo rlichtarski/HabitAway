@@ -38,9 +38,9 @@ void main() {
       devIosClientId != null &&
       devIosBundleId != null) {
     final devContent = '''
-    import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
     import 'package:flutter/foundation.dart'
         show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 
     class DefaultFirebaseOptions {
       static FirebaseOptions get currentPlatform {
@@ -95,7 +95,7 @@ void main() {
         iosBundleId: '$devIosBundleId',
       );
     }
-    
+
     ''';
     File('lib/firebase_options_dev.dart').writeAsStringSync(devContent);
   } else {
@@ -113,9 +113,9 @@ void main() {
       prodIosClientId != null &&
       prodIosBundleId != null) {
     final prodContent = '''
-    import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
     import 'package:flutter/foundation.dart'
         show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 
     class DefaultFirebaseOptions {
       static FirebaseOptions get currentPlatform {
