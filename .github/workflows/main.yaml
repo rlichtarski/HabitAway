@@ -16,8 +16,8 @@ jobs:
   semantic-pull-request:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
-  build:
-    name: Build and Test
+  firebase-setup:
+    name: Generate Firebase Options
     runs-on: ubuntu-latest
 
     env:
@@ -42,19 +42,21 @@ jobs:
       FIREBASE_PROD_IOS_BUNDLE_ID: ${{ secrets.FIREBASE_PROD_IOS_BUNDLE_ID }}
 
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
 
       - name: Generate Firebase Options
         run: |
           echo "Generating Firebase options files..."
           dart scripts/generate_firebase_options.dart
 
-      - name: Run Very Good Workflow
-        uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-        with:
-          flutter_channel: stable
-          coverage_excludes: "*.g.dart *.gen.dart *.freezed.dart"
-
-    
-
+  build:
+    name: Build and Test
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    needs: firebase-setup
+    with:
+      flutter_channel: stable
+      coverage_excludes: "*.g.dart *.gen.dart *.freezed.dart"
