@@ -13,11 +13,33 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build and Test
-    with:
-      flutter_channel: stable
-      coverage_excludes: "*.g.dart *.gen.dart *.freezed.dart"
+  semantic-pull-request:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
+
+  firebase-setup:
+    name: Generate Firebase Options
+    runs-on: macos-latest
+
+    env:
+      FIREBASE_DEV_ANDROID_API_KEY: ${{ secrets.FIREBASE_DEV_ANDROID_API_KEY }}
+      FIREBASE_DEV_IOS_API_KEY: ${{ secrets.FIREBASE_DEV_IOS_API_KEY }}
+      FIREBASE_DEV_ANDROID_APP_ID: ${{ secrets.FIREBASE_DEV_ANDROID_APP_ID }}
+      FIREBASE_DEV_IOS_APP_ID: ${{ secrets.FIREBASE_DEV_IOS_APP_ID }}
+      FIREBASE_DEV_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_DEV_MESSAGING_SENDER_ID }}
+      FIREBASE_DEV_PROJECT_ID: ${{ secrets.FIREBASE_DEV_PROJECT_ID }}
+      FIREBASE_DEV_STORAGE_BUCKET: ${{ secrets.FIREBASE_DEV_STORAGE_BUCKET }}
+      FIREBASE_DEV_IOS_CLIENT_ID: ${{ secrets.FIREBASE_DEV_IOS_CLIENT_ID }}
+      FIREBASE_DEV_IOS_BUNDLE_ID: ${{ secrets.FIREBASE_DEV_IOS_BUNDLE_ID }}
+
+      FIREBASE_PROD_ANDROID_API_KEY: ${{ secrets.FIREBASE_PROD_ANDROID_API_KEY }}
+      FIREBASE_PROD_IOS_API_KEY: ${{ secrets.FIREBASE_PROD_IOS_API_KEY }}
+      FIREBASE_PROD_ANDROID_APP_ID: ${{ secrets.FIREBASE_PROD_ANDROID_APP_ID }}
+      FIREBASE_PROD_IOS_APP_ID: ${{ secrets.FIREBASE_PROD_IOS_APP_ID }}
+      FIREBASE_PROD_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_PROD_MESSAGING_SENDER_ID }}
+      FIREBASE_PROD_PROJECT_ID: ${{ secrets.FIREBASE_PROD_PROJECT_ID }}
+      FIREBASE_PROD_STORAGE_BUCKET: ${{ secrets.FIREBASE_PROD_STORAGE_BUCKET }}
+      FIREBASE_PROD_IOS_CLIENT_ID: ${{ secrets.FIREBASE_PROD_IOS_CLIENT_ID }}
+      FIREBASE_PROD_IOS_BUNDLE_ID: ${{ secrets.FIREBASE_PROD_IOS_BUNDLE_ID }}
 
     steps:
       - name: Checkout Code
@@ -26,28 +48,57 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
 
-      - name: 📦 Install Dependencies
-        run: |
-          flutter pub global activate very_good_cli
-          very_good packages get --recursive --ignore=${{inputs.package_get_excludes}}
-
       - name: Generate Firebase Options
         run: |
           echo "Generating Firebase options files..."
           dart scripts/generate_firebase_options.dart
 
+      - name: List lib/ Directory
+        run: ls -al lib
+
+  build:
+    name: Build and Test
+    runs-on: macos-latest
+    needs: firebase-setup
+    env:
+      FLUTTER_VERSION: stable
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
+          channel: ${{env.FLUTTER_VERSION}}
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      - name: Install Dependencies
+        run: |
+          flutter pub global activate very_good_cli
+          very_good packages get --recursive --ignore="!*"
+
+      - name: Generate Firebase Options (Redundant Safety Check)
+        run: |
+          echo "Regenerating Firebase options files..."
+          dart scripts/generate_firebase_options.dart
+
+      - name: Check Formatting
+        run: dart format --line-length 80 --set-exit-if-changed lib test
+
       - name: Analyze
-        run: flutter analyze ${{inputs.analyze_directories}}
+        run: flutter analyze lib test
 
-      - name: 🧪 Run Tests
-        run: very_good test -j ${{inputs.concurrency}} ${{(inputs.test_recursion && '--recursive') || ''}} ${{(inputs.test_optimization && '--optimization') || '--no-optimization'}} --coverage --test-randomize-ordering-seed random
+      - name: Run Tests
+        run: very_good test -j 4 --coverage --test-randomize-ordering-seed random
 
-      - name: 📊 Check Code Coverage
+      - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v3
         with:
-          path: ${{inputs.working_directory}}/coverage/lcov.info
-          exclude: ${{inputs.coverage_excludes}}
-          min_coverage: ${{inputs.min_coverage}}
+          path: coverage/lcov.info
+          exclude: "*.g.dart *.gen.dart *.freezed.dart"
+          min_coverage: 100
 
 # jobs:
 #   semantic-pull-request:
