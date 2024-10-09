@@ -53,6 +53,9 @@ jobs:
           echo "Generating Firebase options files..."
           dart scripts/generate_firebase_options.dart
 
+      - name: List lib/ Directory
+        run: ls -al lib
+
   build:
     name: Build and Test
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
