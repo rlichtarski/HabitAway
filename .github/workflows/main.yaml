@@ -53,6 +53,12 @@ jobs:
           echo "Generating Firebase options files..."
           dart scripts/generate_firebase_options.dart
 
+      - name: Cache Generated Firebase Options
+        uses: actions/cache@v2
+        with:
+          path: lib/
+          key: ${{ runner.os }}-firebase-options-${{ hashFiles('lib/firebase_options_dev.dart', 'lib/firebase_options_prod.dart') }}
+
       - name: List lib/ Directory
         run: ls -al lib
 
@@ -79,6 +85,15 @@ jobs:
 
       - name: Check Formatting
         run: dart format --line-length 80 --set-exit-if-changed lib test
+
+      - name: Clean and Rebuild Flutter Project
+        run: flutter clean && flutter pub get
+
+      - name: Verify Generated Firebase Options Files
+        run: |
+          echo "Verifying firebase_options files..."
+          ls -al lib/firebase_options_dev.dart
+          ls -al lib/firebase_options_prod.dart
 
       - name: Analyze
         run: flutter analyze lib test
