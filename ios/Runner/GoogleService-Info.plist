@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>545938122398-bm0c67vbg14u6q7lao8lfom0uc11v04q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.545938122398-bm0c67vbg14u6q7lao8lfom0uc11v04q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBAmwEwxh7GcRwx16lMiftz9Zz5r9bYwDI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>545938122398</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.rlichtarski.habitAway</string>
+	<key>PROJECT_ID</key>
+	<string>habit-away-prod</string>
+	<key>STORAGE_BUCKET</key>
+	<string>habit-away-prod.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:545938122398:ios:2812283fa44cddf833fd8f</string>
+</dict>
+</plist>
