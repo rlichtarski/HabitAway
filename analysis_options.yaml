@@ -8,6 +8,7 @@ analyzer:
     - lib/**/*.g.dart
     - assets/**/*.gen.dart
     - packages/**/*.gen.dart
+    - lib/firebase_options_*.dart
 linter:
   rules:
     public_member_api_docs: false
