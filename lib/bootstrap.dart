@@ -26,8 +26,8 @@ class AppBlocObserver extends BlocObserver {
 
 Future<void> bootstrap(
   AppBuilder builder, {
-    required AppFlavor appFlavor,
-    required FirebaseOptions options,
+  required AppFlavor appFlavor,
+  required FirebaseOptions options,
 }) async {
   FlutterError.onError = (details) {
     logE(details.exceptionAsString(), stackTrace: details.stack);
