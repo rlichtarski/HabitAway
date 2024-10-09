@@ -18,7 +18,7 @@ jobs:
 
   firebase-setup:
     name: Generate Firebase Options
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     env:
       FIREBASE_DEV_ANDROID_API_KEY: ${{ secrets.FIREBASE_DEV_ANDROID_API_KEY }}
@@ -58,10 +58,8 @@ jobs:
 
   build:
     name: Build and Test
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: firebase-setup
-    env:
-      FLUTTER_VERSION: 'stable'
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
@@ -70,7 +68,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: stable
-          channel: ${{env.FLUTTER_VERSION}}
+          channel: ${{inputs.flutter_channel}}
           cache: true
           cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
 
