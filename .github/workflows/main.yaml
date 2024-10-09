@@ -77,11 +77,6 @@ jobs:
           flutter pub global activate very_good_cli
           very_good packages get --recursive --ignore="!*"
 
-      - name: Generate Firebase Options (Redundant Safety Check)
-        run: |
-          echo "Regenerating Firebase options files..."
-          dart scripts/generate_firebase_options.dart
-
       - name: Check Formatting
         run: dart format --line-length 80 --set-exit-if-changed lib test
 
