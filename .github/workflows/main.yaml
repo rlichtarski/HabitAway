@@ -21,4 +21,27 @@ jobs:
     with:
       flutter_channel: stable
       coverage_excludes: "*.g.dart *.gen.dart *.freezed.dart"
+      setup: |
+        echo "Generating Firebase options files..."
+        export FIREBASE_DEV_ANDROID_API_KEY="${{ secrets.FIREBASE_DEV_ANDROID_API_KEY }}"
+        export FIREBASE_DEV_IOS_API_KEY="${{ secrets.FIREBASE_DEV_IOS_API_KEY }}"
+        export FIREBASE_DEV_ANDROID_APP_ID="${{ secrets.FIREBASE_DEV_ANDROID_APP_ID }}"
+        export FIREBASE_DEV_IOS_APP_ID="${{ secrets.FIREBASE_DEV_IOS_APP_ID }}"
+        export FIREBASE_DEV_MESSAGING_SENDER_ID="${{ secrets.FIREBASE_DEV_MESSAGING_SENDER_ID }}"
+        export FIREBASE_DEV_PROJECT_ID="${{ secrets.FIREBASE_DEV_PROJECT_ID }}"
+        export FIREBASE_DEV_STORAGE_BUCKET="${{ secrets.FIREBASE_DEV_STORAGE_BUCKET }}"
+        export FIREBASE_DEV_IOS_CLIENT_ID="${{ secrets.FIREBASE_DEV_IOS_CLIENT_ID }}"
+        export FIREBASE_DEV_IOS_BUNDLE_ID="${{ secrets.FIREBASE_DEV_IOS_BUNDLE_ID }}"
+        
+        export FIREBASE_PROD_ANDROID_API_KEY="${{ secrets.FIREBASE_PROD_ANDROID_API_KEY }}"
+        export FIREBASE_PROD_IOS_API_KEY="${{ secrets.FIREBASE_PROD_IOS_API_KEY }}"
+        export FIREBASE_PROD_ANDROID_APP_ID="${{ secrets.FIREBASE_PROD_ANDROID_APP_ID }}"
+        export FIREBASE_PROD_IOS_APP_ID="${{ secrets.FIREBASE_PROD_IOS_APP_ID }}"
+        export FIREBASE_PROD_MESSAGING_SENDER_ID="${{ secrets.FIREBASE_PROD_MESSAGING_SENDER_ID }}"
+        export FIREBASE_PROD_PROJECT_ID="${{ secrets.FIREBASE_PROD_PROJECT_ID }}"
+        export FIREBASE_PROD_STORAGE_BUCKET="${{ secrets.FIREBASE_PROD_STORAGE_BUCKET }}"
+        export FIREBASE_PROD_IOS_CLIENT_ID="${{ secrets.FIREBASE_PROD_IOS_CLIENT_ID }}"
+        export FIREBASE_PROD_IOS_BUNDLE_ID="${{ secrets.FIREBASE_PROD_IOS_BUNDLE_ID }}"
+        
+        dart scripts/generate_firebase_options.dart
 
