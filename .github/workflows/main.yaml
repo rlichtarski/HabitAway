@@ -13,33 +13,12 @@ on:
       - main
 
 jobs:
-  semantic-pull-request:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
-
-  firebase-setup:
-    name: Generate Firebase Options
-    runs-on: ubuntu-latest
-
-    env:
-      FIREBASE_DEV_ANDROID_API_KEY: ${{ secrets.FIREBASE_DEV_ANDROID_API_KEY }}
-      FIREBASE_DEV_IOS_API_KEY: ${{ secrets.FIREBASE_DEV_IOS_API_KEY }}
-      FIREBASE_DEV_ANDROID_APP_ID: ${{ secrets.FIREBASE_DEV_ANDROID_APP_ID }}
-      FIREBASE_DEV_IOS_APP_ID: ${{ secrets.FIREBASE_DEV_IOS_APP_ID }}
-      FIREBASE_DEV_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_DEV_MESSAGING_SENDER_ID }}
-      FIREBASE_DEV_PROJECT_ID: ${{ secrets.FIREBASE_DEV_PROJECT_ID }}
-      FIREBASE_DEV_STORAGE_BUCKET: ${{ secrets.FIREBASE_DEV_STORAGE_BUCKET }}
-      FIREBASE_DEV_IOS_CLIENT_ID: ${{ secrets.FIREBASE_DEV_IOS_CLIENT_ID }}
-      FIREBASE_DEV_IOS_BUNDLE_ID: ${{ secrets.FIREBASE_DEV_IOS_BUNDLE_ID }}
-
-      FIREBASE_PROD_ANDROID_API_KEY: ${{ secrets.FIREBASE_PROD_ANDROID_API_KEY }}
-      FIREBASE_PROD_IOS_API_KEY: ${{ secrets.FIREBASE_PROD_IOS_API_KEY }}
-      FIREBASE_PROD_ANDROID_APP_ID: ${{ secrets.FIREBASE_PROD_ANDROID_APP_ID }}
-      FIREBASE_PROD_IOS_APP_ID: ${{ secrets.FIREBASE_PROD_IOS_APP_ID }}
-      FIREBASE_PROD_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_PROD_MESSAGING_SENDER_ID }}
-      FIREBASE_PROD_PROJECT_ID: ${{ secrets.FIREBASE_PROD_PROJECT_ID }}
-      FIREBASE_PROD_STORAGE_BUCKET: ${{ secrets.FIREBASE_PROD_STORAGE_BUCKET }}
-      FIREBASE_PROD_IOS_CLIENT_ID: ${{ secrets.FIREBASE_PROD_IOS_CLIENT_ID }}
-      FIREBASE_PROD_IOS_BUNDLE_ID: ${{ secrets.FIREBASE_PROD_IOS_BUNDLE_ID }}
+  build:
+    name: Build and Test
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_channel: stable
+      coverage_excludes: "*.g.dart *.gen.dart *.freezed.dart"
 
     steps:
       - name: Checkout Code
@@ -48,18 +27,77 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
 
+      - name: 📦 Install Dependencies
+        run: |
+          flutter pub global activate very_good_cli
+          very_good packages get --recursive --ignore=${{inputs.package_get_excludes}}
+
       - name: Generate Firebase Options
         run: |
           echo "Generating Firebase options files..."
           dart scripts/generate_firebase_options.dart
 
-      - name: List lib/ Directory
-        run: ls -al lib
+      - name: Analyze
+        run: flutter analyze ${{inputs.analyze_directories}}
 
-  build:
-    name: Build and Test
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-    needs: firebase-setup
-    with:
-      flutter_channel: stable
-      coverage_excludes: "*.g.dart *.gen.dart *.freezed.dart"
+      - name: 🧪 Run Tests
+        run: very_good test -j ${{inputs.concurrency}} ${{(inputs.test_recursion && '--recursive') || ''}} ${{(inputs.test_optimization && '--optimization') || '--no-optimization'}} --coverage --test-randomize-ordering-seed random
+
+      - name: 📊 Check Code Coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v3
+        with:
+          path: ${{inputs.working_directory}}/coverage/lcov.info
+          exclude: ${{inputs.coverage_excludes}}
+          min_coverage: ${{inputs.min_coverage}}
+
+# jobs:
+#   semantic-pull-request:
+#     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
+
+#   firebase-setup:
+#     name: Generate Firebase Options
+#     runs-on: ubuntu-latest
+
+#     env:
+#       FIREBASE_DEV_ANDROID_API_KEY: ${{ secrets.FIREBASE_DEV_ANDROID_API_KEY }}
+#       FIREBASE_DEV_IOS_API_KEY: ${{ secrets.FIREBASE_DEV_IOS_API_KEY }}
+#       FIREBASE_DEV_ANDROID_APP_ID: ${{ secrets.FIREBASE_DEV_ANDROID_APP_ID }}
+#       FIREBASE_DEV_IOS_APP_ID: ${{ secrets.FIREBASE_DEV_IOS_APP_ID }}
+#       FIREBASE_DEV_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_DEV_MESSAGING_SENDER_ID }}
+#       FIREBASE_DEV_PROJECT_ID: ${{ secrets.FIREBASE_DEV_PROJECT_ID }}
+#       FIREBASE_DEV_STORAGE_BUCKET: ${{ secrets.FIREBASE_DEV_STORAGE_BUCKET }}
+#       FIREBASE_DEV_IOS_CLIENT_ID: ${{ secrets.FIREBASE_DEV_IOS_CLIENT_ID }}
+#       FIREBASE_DEV_IOS_BUNDLE_ID: ${{ secrets.FIREBASE_DEV_IOS_BUNDLE_ID }}
+
+#       FIREBASE_PROD_ANDROID_API_KEY: ${{ secrets.FIREBASE_PROD_ANDROID_API_KEY }}
+#       FIREBASE_PROD_IOS_API_KEY: ${{ secrets.FIREBASE_PROD_IOS_API_KEY }}
+#       FIREBASE_PROD_ANDROID_APP_ID: ${{ secrets.FIREBASE_PROD_ANDROID_APP_ID }}
+#       FIREBASE_PROD_IOS_APP_ID: ${{ secrets.FIREBASE_PROD_IOS_APP_ID }}
+#       FIREBASE_PROD_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_PROD_MESSAGING_SENDER_ID }}
+#       FIREBASE_PROD_PROJECT_ID: ${{ secrets.FIREBASE_PROD_PROJECT_ID }}
+#       FIREBASE_PROD_STORAGE_BUCKET: ${{ secrets.FIREBASE_PROD_STORAGE_BUCKET }}
+#       FIREBASE_PROD_IOS_CLIENT_ID: ${{ secrets.FIREBASE_PROD_IOS_CLIENT_ID }}
+#       FIREBASE_PROD_IOS_BUNDLE_ID: ${{ secrets.FIREBASE_PROD_IOS_BUNDLE_ID }}
+
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Flutter
+#         uses: subosito/flutter-action@v2
+
+#       - name: Generate Firebase Options
+#         run: |
+#           echo "Generating Firebase options files..."
+#           dart scripts/generate_firebase_options.dart
+
+#       - name: List lib/ Directory
+#         run: ls -al lib
+
+#   build:
+#     name: Build and Test
+#     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+#     needs: firebase-setup
+#     with:
+#       flutter_channel: stable
+#       coverage_excludes: "*.g.dart *.gen.dart *.freezed.dart"
