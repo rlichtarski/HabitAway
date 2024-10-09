@@ -61,7 +61,7 @@ jobs:
     runs-on: macos-latest
     needs: firebase-setup
     env:
-      FLUTTER_VERSION: stable
+      FLUTTER_VERSION: 'stable'
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
