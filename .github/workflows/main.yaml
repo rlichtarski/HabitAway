@@ -48,6 +48,11 @@ jobs:
           flutter-version: '3.24.3'
           channel: stable
 
+      - name: Install Dependencies
+        run: |
+          flutter pub global activate very_good_cli
+          very_good packages get --recursive --ignore="!*"
+
       - name: Generate Firebase Options
         run: |
           echo "Generating Firebase options files..."
