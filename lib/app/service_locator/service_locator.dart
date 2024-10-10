@@ -3,6 +3,7 @@ import 'package:shared/shared.dart';
 
 final getIt = GetIt.instance;
 
-void setupServiceLocator({required AppFlavor appFlavor}) {
-  getIt.registerSingleton(appFlavor);
+void setupServiceLocator({AppFlavor? appFlavor}) {
+  final flavor = appFlavor ?? AppFlavor.development();
+  getIt.registerSingleton<AppFlavor>(flavor);
 }

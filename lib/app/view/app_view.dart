@@ -9,6 +9,7 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appFlavor = getIt<AppFlavor>();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -21,7 +22,7 @@ class AppView extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       home: SafeArea(
         child: Scaffold(
-          body: Text(getIt<AppFlavor>().getEnv(Env.iOSClientId)),
+          body: Text(appFlavor.getEnv(Env.iOSClientId)),
         ),
       ),
     );
