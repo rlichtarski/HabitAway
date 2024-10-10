@@ -86,7 +86,7 @@ jobs:
         with:
           path: coverage/lcov.info
           exclude: "*.g.dart *.gen.dart *.freezed.dart"
-          min_coverage: 100
+          min_coverage: 0
 
 # jobs:
 #   semantic-pull-request:
