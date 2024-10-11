@@ -1,7 +1,6 @@
 {
     "@@locale": "pl",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+    "habitAway": "HabitAway",
+    "welcomeText": "Porzuć złe nawyki wraz z",
+    "getStarted": "Rozpocznij"
 }
