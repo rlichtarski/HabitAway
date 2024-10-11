@@ -40,7 +40,7 @@ Future<void> bootstrap(
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    setupServiceLocator(appFlavor: appFlavor);
+    await setupServiceLocator(appFlavor: appFlavor);
 
     await Firebase.initializeApp(options: options);
     runApp(await builder());
