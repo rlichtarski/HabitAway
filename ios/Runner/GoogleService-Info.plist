@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>545938122398-bm0c67vbg14u6q7lao8lfom0uc11v04q.apps.googleusercontent.com</string>
+	<string>361259803048-j5euvegmotmtqg8cfkojujkle2o3oq7k.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.545938122398-bm0c67vbg14u6q7lao8lfom0uc11v04q</string>
+	<string>com.googleusercontent.apps.361259803048-j5euvegmotmtqg8cfkojujkle2o3oq7k</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBAmwEwxh7GcRwx16lMiftz9Zz5r9bYwDI</string>
+	<string>AIzaSyCalL6z7moK3VwyY-EUcuodzxzLd3Ds798</string>
 	<key>GCM_SENDER_ID</key>
-	<string>545938122398</string>
+	<string>361259803048</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.rlichtarski.habitAway</string>
+	<string>com.rlichtarski.habitAway.dev</string>
 	<key>PROJECT_ID</key>
-	<string>habit-away-prod</string>
+	<string>habit-away-dev</string>
 	<key>STORAGE_BUCKET</key>
-	<string>habit-away-prod.appspot.com</string>
+	<string>habit-away-dev.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:545938122398:ios:2812283fa44cddf833fd8f</string>
+	<string>1:361259803048:ios:4f5bf67ba2430d730c7d9d</string>
 </dict>
 </plist>

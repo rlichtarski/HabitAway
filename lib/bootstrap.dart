@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
@@ -40,9 +41,10 @@ Future<void> bootstrap(
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    setupServiceLocator(appFlavor: appFlavor);
-
+    await setupServiceLocator(appFlavor: appFlavor);
     await Firebase.initializeApp(options: options);
+    SystemUiOverlayTheme.setPortraitOrientation();
+
     runApp(await builder());
   }, (error, stack) {
     logE(error.toString(), stackTrace: stack);
