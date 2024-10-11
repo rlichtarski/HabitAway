@@ -7,5 +7,11 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get counterAppBarTitle => 'Counter';
+  String get habitAway => 'HabitAway';
+
+  @override
+  String get welcomeText => 'Quit bad habits now with';
+
+  @override
+  String get getStarted => 'Get started';
 }

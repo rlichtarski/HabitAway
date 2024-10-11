@@ -7,5 +7,11 @@ class AppLocalizationsPl extends AppLocalizations {
   AppLocalizationsPl([String locale = 'pl']) : super(locale);
 
   @override
-  String get counterAppBarTitle => 'Counter';
+  String get habitAway => 'HabitAway';
+
+  @override
+  String get welcomeText => 'Porzuć złe nawyki wraz z';
+
+  @override
+  String get getStarted => 'Rozpocznij';
 }

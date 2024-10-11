@@ -95,11 +95,23 @@ abstract class AppLocalizations {
     Locale('pl')
   ];
 
-  /// Text shown in the AppBar of the Counter Page
+  /// No description provided for @habitAway.
   ///
   /// In en, this message translates to:
-  /// **'Counter'**
-  String get counterAppBarTitle;
+  /// **'HabitAway'**
+  String get habitAway;
+
+  /// No description provided for @welcomeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Quit bad habits now with'**
+  String get welcomeText;
+
+  /// No description provided for @getStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get started'**
+  String get getStarted;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

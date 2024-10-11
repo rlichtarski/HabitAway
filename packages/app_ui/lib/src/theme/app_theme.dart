@@ -7,7 +7,7 @@ class AppTheme {
 
   Brightness get brightness => Brightness.light;
 
-  Color get backgroundColor => AppColors.white;
+  Color get backgroundColor => AppColors.lightBackground;
 
   Color get primary => AppColors.black;
 
@@ -18,9 +18,15 @@ class AppTheme {
       primary: primary,
       swapOnMaterial3: true,
     ),
+    scaffoldBackground: AppColors.lightBackground,
     useMaterial3: true,
     useMaterial3ErrorColors: true,
   ).copyWith(
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.lightPrimary,
+      ),
+    ),
     textTheme: const AppTheme().textTheme,
     iconTheme: const IconThemeData(color: AppColors.black),
     inputDecorationTheme: const InputDecorationTheme(
@@ -104,7 +110,7 @@ class AppDarkTheme extends AppTheme {
   Brightness get brightness => Brightness.dark;
 
   @override
-  Color get backgroundColor => AppColors.black;
+  Color get backgroundColor => AppColors.darkBackground;
 
   @override
   Color get primary => AppColors.white;
@@ -120,37 +126,43 @@ class AppDarkTheme extends AppTheme {
 
   @override
   ThemeData get theme => FlexThemeData.dark(
-        scheme: FlexScheme.custom,
-        darkIsTrueBlack: true,
-        colors: FlexSchemeColor.from(
-          brightness: brightness,
-          primary: primary,
-          appBarColor: AppColors.transparent,
-          swapOnMaterial3: true,
-        ),
-        useMaterial3: true,
-        useMaterial3ErrorColors: true,
-      ).copyWith(
-        textTheme: const AppDarkTheme().textTheme,
-        iconTheme: const IconThemeData(color: AppColors.white),
-        inputDecorationTheme: const InputDecorationTheme(
-          contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
-          border: OutlineInputBorder(borderSide: BorderSide.none),
-        ),
-        appBarTheme: const AppBarTheme(
-          elevation: 0,
-          backgroundColor: AppColors.black,
-          surfaceTintColor: AppColors.black,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          type: BottomNavigationBarType.fixed,
-        ),
-        bottomSheetTheme: const BottomSheetThemeData(
-          surfaceTintColor: AppColors.background,
-          backgroundColor: AppColors.background,
-          modalBackgroundColor: AppColors.background,
-        ),
-      );
+    scheme: FlexScheme.custom,
+    darkIsTrueBlack: true,
+    colors: FlexSchemeColor.from(
+      brightness: brightness,
+      primary: primary,
+      appBarColor: AppColors.transparent,
+      swapOnMaterial3: true,
+    ),
+    scaffoldBackground: AppColors.darkBackground,
+    useMaterial3: true,
+    useMaterial3ErrorColors: true,
+  ).copyWith(
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.darkPrimary,
+      ),
+    ),
+    textTheme: const AppDarkTheme().textTheme,
+    iconTheme: const IconThemeData(color: AppColors.white),
+    inputDecorationTheme: const InputDecorationTheme(
+      contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
+      border: OutlineInputBorder(borderSide: BorderSide.none),
+    ),
+    appBarTheme: const AppBarTheme(
+      elevation: 0,
+      backgroundColor: AppColors.background,
+      surfaceTintColor: AppColors.black,
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      surfaceTintColor: AppColors.background,
+      backgroundColor: AppColors.background,
+      modalBackgroundColor: AppColors.background,
+    ),
+  );
 }
 
 class SystemUiOverlayTheme {

@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_away/app/routes/routes.dart';
 import 'package:habit_away/app/service_locator/service_locator.dart';
@@ -12,12 +13,9 @@ class AppView extends StatelessWidget {
     final router = AppRouter().router(getIt<OnboardingStorageService>());
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        ),
-        useMaterial3: true,
-      ),
+      themeMode: ThemeMode.light,
+      theme: const AppTheme().theme,
+      darkTheme: const AppDarkTheme().theme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router,
