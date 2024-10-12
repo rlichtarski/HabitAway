@@ -12,6 +12,7 @@ dependencies:
   bloc: ^8.1.4
   env:
     path: packages/env
+  equatable: ^2.0.5
   firebase_auth: ^5.3.1
   firebase_core: ^3.6.0
   flutter:
@@ -32,6 +33,8 @@ dependencies:
   shared_preferences: ^2.3.2
   storage:
     path: packages/storage/storage
+  user_repository:
+    path: packages/user_repository
 
 dev_dependencies:
   bloc_test: ^9.1.7
