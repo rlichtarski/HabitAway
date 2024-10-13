@@ -25,7 +25,7 @@ class Password extends FormzInput<String, PasswordValidationError>
 
   @override
   Map<PasswordValidationError?, String?> get validationErrorMessage => {
-    PasswordValidationError.empty: 'This field is required',
+    PasswordValidationError.empty: 'Password is required',
     PasswordValidationError.invalid:
         'Password should contain at least 6 characters',
   };

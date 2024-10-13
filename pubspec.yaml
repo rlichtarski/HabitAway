@@ -7,6 +7,7 @@ environment:
   sdk: ^3.5.0
 
 dependencies:
+  animations: ^2.0.11
   app_ui:
     path: packages/app_ui
   bloc: ^8.1.4
@@ -14,6 +15,8 @@ dependencies:
     path: packages/env
   equatable: ^2.0.5
   firebase_auth: ^5.3.1
+  firebase_authentication_client:
+    path: packages/authentication/firebase_authentication_client
   firebase_core: ^3.6.0
   flutter:
     sdk: flutter
@@ -35,6 +38,8 @@ dependencies:
   shared_preferences: ^2.3.2
   storage:
     path: packages/storage/storage
+  token_storage:
+    path: packages/authentication/token_storage
   user_repository:
     path: packages/user_repository
 

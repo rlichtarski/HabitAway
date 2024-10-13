@@ -2,5 +2,17 @@
     "@@locale": "pl",
     "habitAway": "HabitAway",
     "welcomeText": "Porzuć złe nawyki wraz z",
-    "getStarted": "Rozpocznij"
+    "getStarted": "Rozpocznij",
+    "emailLabel": "Email",
+    "emailHint": "Wprowadź swój adres email",
+    "usernameLabel": "Nazwa użytkownika",
+    "usernameHint": "Wprowadź swoją nazwę użytkownika",
+    "passwordLabel": "Hasło",
+    "passwordHint": "Wprowadź swoje hasło",
+    "confirmPasswordLabel": "Potwierdź hasło",
+    "confirmPasswordHint": "Potwierdź swoje hasło",
+    "confirmPasswordRequiredError": "Potwierdzenie hasła jest wymagane",
+    "passwordsDoNotMatchError": "Hasła nie pasują do siebie",
+    "pleaseWait": "Proszę czekać",
+    "signUp": "Zarejestruj się"
 }

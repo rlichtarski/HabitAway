@@ -1,3 +1,5 @@
+// ignore_for_file: cascade_invocations
+
 import 'package:get_it/get_it.dart';
 import 'package:onboarding_storage/onboarding_storage.dart';
 import 'package:persistent_storage/persistent_storage.dart';
@@ -14,8 +16,9 @@ Future<void> setupServiceLocator({AppFlavor? appFlavor}) async {
   final sharedPreferences = await SharedPreferences.getInstance();
   final storage = PersistentStorage(sharedPreferences: sharedPreferences);
 
-  getIt..registerSingleton<Storage>(storage)
-  ..registerSingleton<OnboardingStorageService>(
+  getIt.registerSingleton<Storage>(storage);
+
+  getIt.registerSingleton<OnboardingStorageService>(
     OnboardingStorageService(storage: storage),
   );
 }

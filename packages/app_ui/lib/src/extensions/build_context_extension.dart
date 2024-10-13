@@ -3,13 +3,10 @@ import 'package:app_ui/src/extensions/text_style_extension.dart';
 import 'package:flutter/material.dart';
 
 extension BuildContextX on BuildContext {
-  /// Defines current theme [Brightness].
   Brightness get brightness => theme.brightness;
 
-  /// Whether current theme [Brightness] is light.
   bool get isLight => brightness == Brightness.light;
 
-  /// Whether current theme [Brightness] is dark.
   bool get isDark => !isLight;
 
   void unfocus() => FocusScope.of(this).unfocus();
@@ -31,22 +28,16 @@ extension BuildContextX on BuildContext {
   Color customReversedAdaptiveColor({Color? light, Color? dark}) =>
       isDark ? (dark ?? AppColors.black) : (light ?? AppColors.white);
 
-  /// Defines [MediaQueryData] based on provided context.
   Size get size => MediaQuery.sizeOf(this);
 
-  /// Defines view insets from [MediaQuery] with current [BuildContext].
   EdgeInsets get viewInsets => MediaQuery.viewInsetsOf(this);
 
-  /// Defines view padding of from [MediaQuery] with current [BuildContext].
   EdgeInsets get viewPadding => MediaQuery.viewPaddingOf(this);
 
-  /// Defines value of device current width based on [size].
   double get screenWidth => size.width;
 
-  /// Defines value of device current height based on [size].
   double get screenHeight => size.height;
 
-  /// Defines value of current device pixel ratio.
   double get devicePixelRatio => MediaQuery.devicePixelRatioOf(this);
 
   bool get isAndroid => theme.platform == TargetPlatform.android;
@@ -54,4 +45,31 @@ extension BuildContextX on BuildContext {
   bool get isIOS => !isAndroid;
 
   bool get isMobile => isAndroid || isIOS;
+
+  void showSnackBar(
+    String text, {
+    bool dismissible = true,
+    Color color = AppColors.white,
+    Duration duration = const Duration(seconds: 4),
+    SnackBarBehavior? behavior,
+    SnackBarAction? snackBarAction,
+    String? solution,
+    DismissDirection dismissDirection = DismissDirection.down,
+  }) => ScaffoldMessenger.of(this)
+    ..clearSnackBars()
+    ..showSnackBar(
+      SnackBar(
+        content: Text(text),
+        action: snackBarAction,
+        behavior: behavior,
+        backgroundColor: color,
+        dismissDirection: dismissDirection,
+        duration: duration,
+      ),
+    );
+
+  void closeSnackBars() {
+    ScaffoldMessenger.of(this).clearSnackBars();
+  }
+
 }

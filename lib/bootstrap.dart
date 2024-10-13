@@ -34,15 +34,14 @@ Future<void> bootstrap(
     logE(details.exceptionAsString(), stackTrace: details.stack);
   };
 
-  Bloc.observer = const AppBlocObserver();
-
-  // Add cross-flavor configuration here
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: options);
 
   await runZonedGuarded(() async {
-    WidgetsFlutterBinding.ensureInitialized();
 
     await setupServiceLocator(appFlavor: appFlavor);
-    await Firebase.initializeApp(options: options);
+
+    Bloc.observer = const AppBlocObserver();
     SystemUiOverlayTheme.setPortraitOrientation();
 
     runApp(await builder());

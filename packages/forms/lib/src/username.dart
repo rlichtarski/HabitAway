@@ -21,7 +21,7 @@ class Username extends FormzInput<String, UsernameValidationError>
 
   @override
   Map<UsernameValidationError?, String?> get validationErrorMessage => {
-    UsernameValidationError.empty: 'This field is required',
+    UsernameValidationError.empty: 'Username is required',
     UsernameValidationError.invalid:
         'Username must be between 3 and 16 characters. Also, it can only '
             'contain letters, numbers, periods, and underscores.',

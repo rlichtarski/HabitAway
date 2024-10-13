@@ -14,4 +14,40 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get getStarted => 'Rozpocznij';
+
+  @override
+  String get emailLabel => 'Email';
+
+  @override
+  String get emailHint => 'Wprowadź swój adres email';
+
+  @override
+  String get usernameLabel => 'Nazwa użytkownika';
+
+  @override
+  String get usernameHint => 'Wprowadź swoją nazwę użytkownika';
+
+  @override
+  String get passwordLabel => 'Hasło';
+
+  @override
+  String get passwordHint => 'Wprowadź swoje hasło';
+
+  @override
+  String get confirmPasswordLabel => 'Potwierdź hasło';
+
+  @override
+  String get confirmPasswordHint => 'Potwierdź swoje hasło';
+
+  @override
+  String get confirmPasswordRequiredError => 'Potwierdzenie hasła jest wymagane';
+
+  @override
+  String get passwordsDoNotMatchError => 'Hasła nie pasują do siebie';
+
+  @override
+  String get pleaseWait => 'Proszę czekać';
+
+  @override
+  String get signUp => 'Zarejestruj się';
 }

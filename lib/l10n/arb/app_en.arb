@@ -2,5 +2,17 @@
     "@@locale": "en",
     "habitAway": "HabitAway",
     "welcomeText": "Quit bad habits now with",
-    "getStarted": "Get started"
+    "getStarted": "Get started",
+    "emailLabel": "Email",
+    "emailHint": "Enter your email",
+    "usernameLabel": "Username",
+    "usernameHint": "Enter your username",
+    "passwordLabel": "Password",
+    "passwordHint": "Enter your password",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordHint": "Re-enter your password",
+    "confirmPasswordRequiredError": "Confirm Password is required",
+    "passwordsDoNotMatchError": "Passwords do not match",
+    "pleaseWait": "Please wait",
+    "signUp": "Sign up"
 }
