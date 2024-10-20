@@ -13,16 +13,21 @@ class AgreeInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final colorScheme = context.themeReference.colorScheme;
     return Padding(
       padding: const EdgeInsets.all(AppSpacing.lg),
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
           text: l10n.agreeToTermsPart1,
+          style: TextStyle(color: colorScheme.primary,),
           children: [
             TextSpan(
               text: l10n.termsOfService,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: colorScheme.primary,
+                fontWeight: AppFontWeight.bold,
+              ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () => context.isIOS
                   ? showModalBottomSheet<void>(
@@ -53,10 +58,16 @@ class AgreeInfo extends StatelessWidget {
                     ),
                   ),
             ),
-            TextSpan(text: l10n.agreeToTermsPart2),
+            TextSpan(
+              text: l10n.agreeToTermsPart2,
+              style: TextStyle(color: colorScheme.primary),
+            ),
             TextSpan(
               text: l10n.policies,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontWeight: AppFontWeight.bold,
+                color: colorScheme.primary,
+              ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () => context.isIOS
                   ? showModalBottomSheet<void>(

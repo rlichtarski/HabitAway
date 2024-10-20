@@ -12,7 +12,7 @@ extension BuildContextX on BuildContext {
 
   void popNavigator() => Navigator.of(this).pop();
 
-  ThemeData get themeReference => const AppTheme().theme;
+  ThemeData get themeReference => Theme.of(this);
 
   /// Defines an adaptive [Color], depending on current theme brightness.
   Color get adaptiveColor => isDark ? AppColors.white : AppColors.black;

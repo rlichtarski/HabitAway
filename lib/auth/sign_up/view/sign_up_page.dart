@@ -2,6 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_away/auth/sign_up/sign_up.dart';
+import 'package:habit_away/l10n/l10n.dart';
 import 'package:user_repository/user_repository.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -22,6 +23,7 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return AppScaffold(
       body: Padding(
         padding: const EdgeInsets.all(AppSpacing.md),
@@ -31,15 +33,19 @@ class SignUpView extends StatelessWidget {
               height: AppSpacing.xlg,
             ),
             Text(
-              'Join Habit Away today!', 
-              style: UITextStyle.headline1,
+              l10n.joinHabitAway, 
+              style: UITextStyle.headline1.copyWith(
+                color: context.themeReference.colorScheme.primary,
+              ),  
             ),
             const SizedBox(
               height: AppSpacing.md,
             ),
             Text(
-              'Start your journey with breaking bad habits!',
-              style: UITextStyle.bodyText1,
+              l10n.startJourney,
+              style: UITextStyle.bodyText1.copyWith(
+                color: context.themeReference.colorScheme.primary,
+              ),
             ),
             const SizedBox(
               height: AppSpacing.lg,

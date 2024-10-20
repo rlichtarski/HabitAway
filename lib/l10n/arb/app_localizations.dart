@@ -206,7 +206,7 @@ abstract class AppLocalizations {
   /// No description provided for @policies.
   ///
   /// In en, this message translates to:
-  /// **'Policies'**
+  /// **'Privacy Policy'**
   String get policies;
 
   /// No description provided for @ok.
@@ -226,6 +226,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terms of Service'**
   String get termsAndConditionsTitle;
+
+  /// No description provided for @joinHabitAway.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Habit Away today!'**
+  String get joinHabitAway;
+
+  /// No description provided for @startJourney.
+  ///
+  /// In en, this message translates to:
+  /// **'Start your journey with breaking bad habits!'**
+  String get startJourney;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

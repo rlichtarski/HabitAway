@@ -18,8 +18,10 @@
     "agreeToTermsPart1": "By signing up, you agree to our ",
     "agreeToTermsPart2": " and ",
     "termsOfService": "Terms of Service",
-    "policies": "Policies",
+    "policies": "Privacy Policy",
     "ok": "OK",
     "privacyPolicyTitle": "Privacy policy",
-    "termsAndConditionsTitle": "Terms of Service"
+    "termsAndConditionsTitle": "Terms of Service",
+    "joinHabitAway": "Join Habit Away today!",
+    "startJourney": "Start your journey with breaking bad habits!"
 }

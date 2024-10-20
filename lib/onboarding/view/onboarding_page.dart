@@ -43,7 +43,7 @@ class OnboardingView extends StatelessWidget {
                   context.go(AppRoutes.auth.route);
                 }
               },
-              child: Text(l10n.getStarted, style: UITextStyle.button,),
+              child: Text(l10n.getStarted, style: UITextStyle.ctaButton,),
             ),
           ],
         ),

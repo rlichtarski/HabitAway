@@ -71,4 +71,10 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get termsAndConditionsTitle => 'Zasady i warunki';
+
+  @override
+  String get joinHabitAway => 'Dołącz do Habit Away!';
+
+  @override
+  String get startJourney => 'Rozpocznij swoją podróż z przełamaniem złych nawyków!';
 }

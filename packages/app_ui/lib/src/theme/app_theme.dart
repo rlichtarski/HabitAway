@@ -24,17 +24,18 @@ class AppTheme {
   ).copyWith(
     colorScheme: ColorScheme(
       brightness: brightness, 
-      primary: AppColors.lightPrimary, 
-      onPrimary: AppColors.lightSecondary, 
-      secondary: AppColors.lightSecondary, 
+      primary: AppColors.black, 
+      onPrimary: AppColors.lightDarkish, 
+      secondary: AppColors.lightDarkish, 
       onSecondary: AppColors.lightDarkish, 
       error: AppColors.red, 
       onError: AppColors.white, 
       surface: AppColors.lightBackground, 
-      onSurface: AppColors.lightSecondary,
+      onSurface: AppColors.black, //like text color on text input
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        // foregroundColor: AppColors.darkBackground,
         backgroundColor: AppColors.lightPrimary,
       ),
     ),
@@ -166,17 +167,18 @@ class AppDarkTheme extends AppTheme {
   ).copyWith(
     colorScheme: ColorScheme(
       brightness: brightness, 
-      primary: AppColors.darkPrimary, 
-      onPrimary: AppColors.darkSecondary, 
+      primary: AppColors.white, 
+      onPrimary: AppColors.white, 
       secondary: AppColors.darkSecondary, 
-      onSecondary: AppColors.darkLightish, 
+      onSecondary: AppColors.white, 
       error: AppColors.red, 
       onError: AppColors.white, 
       surface: AppColors.darkBackground, 
-      onSurface: AppColors.darkSecondary,
+      onSurface: AppColors.white,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        // foregroundColor: AppColors.darkLightish,
         backgroundColor: AppColors.darkPrimary,
       ),
     ),

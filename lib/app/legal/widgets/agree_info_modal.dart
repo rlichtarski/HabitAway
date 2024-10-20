@@ -18,7 +18,7 @@ class AgreeInfoModal extends StatelessWidget {
     final colors = theme.colorScheme;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () => context.popNavigator(),
+      onTap: () => Navigator.of(context).pop(),
       child: GestureDetector(
         onTap: () {  },
         child: DraggableScrollableSheet(
@@ -59,7 +59,7 @@ class AgreeInfoModal extends StatelessWidget {
                         AppSpacing.lg,
                       ),
                       child: GestureDetector(
-                        onTap: () => context.popNavigator,
+                        onTap: () => Navigator.of(context).pop(),
                         child: const Icon(
                           Icons.close_fullscreen_outlined, 
                           size: 24,

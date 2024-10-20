@@ -191,7 +191,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         Text(l10n.pleaseWait),
                       ],
                     )
-                  : Text(l10n.signUp),
+                  : Text(l10n.signUp, style: UITextStyle.ctaButton,),
                 ),
               ),
             ],

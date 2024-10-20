@@ -61,7 +61,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get termsOfService => 'Terms of Service';
 
   @override
-  String get policies => 'Policies';
+  String get policies => 'Privacy Policy';
 
   @override
   String get ok => 'OK';
@@ -71,4 +71,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsAndConditionsTitle => 'Terms of Service';
+
+  @override
+  String get joinHabitAway => 'Join Habit Away today!';
+
+  @override
+  String get startJourney => 'Start your journey with breaking bad habits!';
 }

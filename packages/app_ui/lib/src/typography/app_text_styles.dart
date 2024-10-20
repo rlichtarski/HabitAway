@@ -97,6 +97,13 @@ abstract class UITextStyle {
     letterSpacing: 0.4,
   );
 
+  static final TextStyle ctaButton = _baseTextStyle.copyWith(
+    fontWeight: AppFontWeight.semiBold,
+    fontSize: 20,
+    height: 1.42,
+    letterSpacing: 0.1,
+  );
+
   static final TextStyle button = _baseTextStyle.copyWith(
     fontSize: 16,
     height: 1.42,
