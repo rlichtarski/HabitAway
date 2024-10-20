@@ -1,5 +1,4 @@
-import 'package:app_ui/src/colors/app_colors.dart';
-import 'package:app_ui/src/extensions/text_style_extension.dart';
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
 extension BuildContextX on BuildContext {
@@ -10,6 +9,10 @@ extension BuildContextX on BuildContext {
   bool get isDark => !isLight;
 
   void unfocus() => FocusScope.of(this).unfocus();
+
+  void popNavigator() => Navigator.of(this).pop();
+
+  ThemeData get themeReference => const AppTheme().theme;
 
   /// Defines an adaptive [Color], depending on current theme brightness.
   Color get adaptiveColor => isDark ? AppColors.white : AppColors.black;

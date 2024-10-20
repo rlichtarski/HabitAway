@@ -1,4 +1,5 @@
 import 'package:app_ui/app_ui.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forms/forms.dart';
@@ -22,11 +23,23 @@ class _SignUpFormState extends State<SignUpForm> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
+  late TapGestureRecognizer _termsOfServiceRecognizer;
+  late TapGestureRecognizer _policiesRecognizer;
+
   @override
   void initState() {
     super.initState();
     _obscurePassword = ValueNotifier(true);
     _obscureConfirmPassword = ValueNotifier(true);
+
+    _termsOfServiceRecognizer = TapGestureRecognizer()
+      ..onTap = () {
+        _showTermsOfService(context);
+      };
+    _policiesRecognizer = TapGestureRecognizer()
+      ..onTap = () {
+        _showPolicies(context);
+      };
   }
 
   @override
@@ -37,6 +50,9 @@ class _SignUpFormState extends State<SignUpForm> {
     _usernameController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
+
+    _termsOfServiceRecognizer.dispose();
+    _policiesRecognizer.dispose();
     super.dispose();
   }
 
@@ -149,6 +165,8 @@ class _SignUpFormState extends State<SignUpForm> {
                   );
                 },
               ),
+              const SizedBox(height: AppSpacing.sm),
+              const AgreeInfo(),
               const SizedBox(height: AppSpacing.lg),
               SizedBox(
                 width: double.infinity,
@@ -192,3 +210,35 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 }
+
+void _showTermsOfService(BuildContext context) {
+    final l10n = context.l10n;
+    showModalBottomSheet<dynamic>(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(AppSpacing.lg),
+          child: Text(
+            l10n.termsOfServiceContent,
+            style: ContentTextStyle.bodyText1,
+          ),
+        );
+      },
+    );
+  }
+
+  void _showPolicies(BuildContext context) {
+    final l10n = context.l10n;
+    showModalBottomSheet<dynamic>(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(AppSpacing.lg),
+          child: Text(
+            l10n.policiesContent,
+            style: ContentTextStyle.bodyText1,
+          ),
+        );
+      },
+    );
+  }

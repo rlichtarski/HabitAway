@@ -34,11 +34,10 @@ Future<void> bootstrap(
     logE(details.exceptionAsString(), stackTrace: details.stack);
   };
 
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: options);
-
   await runZonedGuarded(() async {
 
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(options: options);
     await setupServiceLocator(appFlavor: appFlavor);
 
     Bloc.observer = const AppBlocObserver();

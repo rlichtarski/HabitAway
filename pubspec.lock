@@ -412,6 +412,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_markdown:
+    dependency: "direct main"
+    description:
+      name: flutter_markdown
+      sha256: bd9c475d9aae256369edacafc29d1e74c81f78a10cdcdacbbbc9e3c43d009e4a
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.4"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -653,6 +661,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.2-main.4"
+  markdown:
+    dependency: transitive
+    description:
+      name: markdown
+      sha256: ef2a1298144e3f985cc736b22e0ccdaf188b5b3970648f2d9dc13efd1d9df051
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.2"
   matcher:
     dependency: transitive
     description:
@@ -717,13 +733,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
-  onboarding_storage:
-    dependency: "direct main"
-    description:
-      path: "packages/storage/onboarding_storage"
-      relative: true
-    source: path
-    version: "0.1.0+1"
   package_config:
     dependency: transitive
     description:
@@ -812,7 +821,7 @@ packages:
     source: hosted
     version: "1.5.1"
   provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: provider
       sha256: c8a055ee5ce3fd98d6fc872478b03823ffdb448699c6ebdbbc71d59b596fd48c
@@ -1081,6 +1090,13 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/user_repository"
+      relative: true
+    source: path
+    version: "0.1.0+1"
+  user_storage:
+    dependency: "direct main"
+    description:
+      path: "packages/storage/user_storage"
       relative: true
     source: path
     version: "0.1.0+1"

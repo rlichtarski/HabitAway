@@ -22,6 +22,17 @@ class AppTheme {
     useMaterial3: true,
     useMaterial3ErrorColors: true,
   ).copyWith(
+    colorScheme: ColorScheme(
+      brightness: brightness, 
+      primary: AppColors.lightPrimary, 
+      onPrimary: AppColors.lightSecondary, 
+      secondary: AppColors.lightSecondary, 
+      onSecondary: AppColors.lightDarkish, 
+      error: AppColors.red, 
+      onError: AppColors.white, 
+      surface: AppColors.lightBackground, 
+      onSurface: AppColors.lightSecondary,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.lightPrimary,
@@ -30,6 +41,8 @@ class AppTheme {
     textTheme: const AppTheme().textTheme,
     iconTheme: const IconThemeData(color: AppColors.black),
     inputDecorationTheme: const InputDecorationTheme(
+      fillColor: AppColors.lightPrimary,
+      filled: true,
       contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
       border: OutlineInputBorder(borderSide: BorderSide.none),
     ),
@@ -45,6 +58,19 @@ class AppTheme {
       showDragHandle: true,
       surfaceTintColor: AppColors.white,
       backgroundColor: AppColors.white,
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColors.lightSecondary,
+    ),
+    dialogTheme: const DialogTheme(
+      shadowColor: AppColors.transparent,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(AppSpacing.xlg)),
+        side: BorderSide(
+          color: AppColors.lightPrimary,
+        ),
+      ),
     ),
   );
 
@@ -138,6 +164,17 @@ class AppDarkTheme extends AppTheme {
     useMaterial3: true,
     useMaterial3ErrorColors: true,
   ).copyWith(
+    colorScheme: ColorScheme(
+      brightness: brightness, 
+      primary: AppColors.darkPrimary, 
+      onPrimary: AppColors.darkSecondary, 
+      secondary: AppColors.darkSecondary, 
+      onSecondary: AppColors.darkLightish, 
+      error: AppColors.red, 
+      onError: AppColors.white, 
+      surface: AppColors.darkBackground, 
+      onSurface: AppColors.darkSecondary,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.darkPrimary,
@@ -146,6 +183,8 @@ class AppDarkTheme extends AppTheme {
     textTheme: const AppDarkTheme().textTheme,
     iconTheme: const IconThemeData(color: AppColors.white),
     inputDecorationTheme: const InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.darkPrimary,
       contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
       border: OutlineInputBorder(borderSide: BorderSide.none),
     ),
@@ -161,6 +200,19 @@ class AppDarkTheme extends AppTheme {
       surfaceTintColor: AppColors.background,
       backgroundColor: AppColors.background,
       modalBackgroundColor: AppColors.background,
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColors.darkSecondary,
+    ),
+    dialogTheme: const DialogTheme(
+      shadowColor: AppColors.transparent,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(AppSpacing.xlg)),
+        side: BorderSide(
+          color: AppColors.darkPrimary,
+        ),
+      ),
     ),
   );
 }

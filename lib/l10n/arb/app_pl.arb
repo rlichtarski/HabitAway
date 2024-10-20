@@ -14,5 +14,15 @@
     "confirmPasswordRequiredError": "Potwierdzenie hasła jest wymagane",
     "passwordsDoNotMatchError": "Hasła nie pasują do siebie",
     "pleaseWait": "Proszę czekać",
-    "signUp": "Zarejestruj się"
+    "signUp": "Zarejestruj się",
+    "agreeToTermsPart1": "Rejestrując się, zgadzasz się na nasze ",
+    "agreeToTermsPart2": " oraz ",
+    "agreeToTermsPart3": ".",
+    "termsOfService": "Warunki świadczenia usług",
+    "policies": "Polityki prywatności",
+    "termsOfServiceContent": "Oto Warunki świadczenia usług...",
+    "policiesContent": "Oto Polityki prywatności...",
+    "ok": "OK",
+    "privacyPolicyTitle": "Polityka prywatności",
+    "termsAndConditionsTitle": "Zasady i warunki"
 }

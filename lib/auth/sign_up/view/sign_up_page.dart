@@ -22,13 +22,29 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppScaffold(
+    return AppScaffold(
       body: Padding(
-        padding: EdgeInsets.all(AppSpacing.md),
+        padding: const EdgeInsets.all(AppSpacing.md),
         child: Column(
           children: [
-            Text('SignUpPage!'),
-            SignUpForm(),
+            const SizedBox(
+              height: AppSpacing.xlg,
+            ),
+            Text(
+              'Join Habit Away today!', 
+              style: UITextStyle.headline1,
+            ),
+            const SizedBox(
+              height: AppSpacing.md,
+            ),
+            Text(
+              'Start your journey with breaking bad habits!',
+              style: UITextStyle.bodyText1,
+            ),
+            const SizedBox(
+              height: AppSpacing.lg,
+            ),
+            const SignUpForm(),
           ],
         ),
       ),

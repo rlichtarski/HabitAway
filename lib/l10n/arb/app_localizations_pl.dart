@@ -50,4 +50,34 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get signUp => 'Zarejestruj się';
+
+  @override
+  String get agreeToTermsPart1 => 'Rejestrując się, zgadzasz się na nasze ';
+
+  @override
+  String get agreeToTermsPart2 => ' oraz ';
+
+  @override
+  String get agreeToTermsPart3 => '.';
+
+  @override
+  String get termsOfService => 'Warunki świadczenia usług';
+
+  @override
+  String get policies => 'Polityki prywatności';
+
+  @override
+  String get termsOfServiceContent => 'Oto Warunki świadczenia usług...';
+
+  @override
+  String get policiesContent => 'Oto Polityki prywatności...';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get privacyPolicyTitle => 'Polityka prywatności';
+
+  @override
+  String get termsAndConditionsTitle => 'Zasady i warunki';
 }

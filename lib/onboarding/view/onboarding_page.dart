@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:habit_away/app/routes/app_routes.dart';
 import 'package:habit_away/app/service_locator/service_locator.dart';
 import 'package:habit_away/l10n/l10n.dart';
-import 'package:onboarding_storage/onboarding_storage.dart';
+import 'package:user_storage/user_storage.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -36,7 +36,7 @@ class OnboardingView extends StatelessWidget {
             const SizedBox(height: AppSpacing.xxlg),
             ElevatedButton(
               onPressed: () async {
-                final prefsService = getIt<OnboardingStorageService>();
+                final prefsService = getIt<UserStorage>();
                 await prefsService.markOnboardingSeen();
                 
                 if (context.mounted) {

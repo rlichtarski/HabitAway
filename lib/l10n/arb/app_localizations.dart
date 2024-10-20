@@ -184,6 +184,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign up'**
   String get signUp;
+
+  /// No description provided for @agreeToTermsPart1.
+  ///
+  /// In en, this message translates to:
+  /// **'By signing up, you agree to our '**
+  String get agreeToTermsPart1;
+
+  /// No description provided for @agreeToTermsPart2.
+  ///
+  /// In en, this message translates to:
+  /// **' and '**
+  String get agreeToTermsPart2;
+
+  /// No description provided for @agreeToTermsPart3.
+  ///
+  /// In en, this message translates to:
+  /// **'.'**
+  String get agreeToTermsPart3;
+
+  /// No description provided for @termsOfService.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get termsOfService;
+
+  /// No description provided for @policies.
+  ///
+  /// In en, this message translates to:
+  /// **'Policies'**
+  String get policies;
+
+  /// No description provided for @termsOfServiceContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Here are the Terms of Service...'**
+  String get termsOfServiceContent;
+
+  /// No description provided for @policiesContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Here are the Policies...'**
+  String get policiesContent;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @privacyPolicyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get privacyPolicyTitle;
+
+  /// No description provided for @termsAndConditionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get termsAndConditionsTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
