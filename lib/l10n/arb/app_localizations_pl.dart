@@ -58,19 +58,10 @@ class AppLocalizationsPl extends AppLocalizations {
   String get agreeToTermsPart2 => ' oraz ';
 
   @override
-  String get agreeToTermsPart3 => '.';
-
-  @override
-  String get termsOfService => 'Warunki świadczenia usług';
+  String get termsOfService => 'Zasady i warunki';
 
   @override
   String get policies => 'Polityki prywatności';
-
-  @override
-  String get termsOfServiceContent => 'Oto Warunki świadczenia usług...';
-
-  @override
-  String get policiesContent => 'Oto Polityki prywatności...';
 
   @override
   String get ok => 'OK';

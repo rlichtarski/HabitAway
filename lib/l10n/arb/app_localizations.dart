@@ -197,12 +197,6 @@ abstract class AppLocalizations {
   /// **' and '**
   String get agreeToTermsPart2;
 
-  /// No description provided for @agreeToTermsPart3.
-  ///
-  /// In en, this message translates to:
-  /// **'.'**
-  String get agreeToTermsPart3;
-
   /// No description provided for @termsOfService.
   ///
   /// In en, this message translates to:
@@ -214,18 +208,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Policies'**
   String get policies;
-
-  /// No description provided for @termsOfServiceContent.
-  ///
-  /// In en, this message translates to:
-  /// **'Here are the Terms of Service...'**
-  String get termsOfServiceContent;
-
-  /// No description provided for @policiesContent.
-  ///
-  /// In en, this message translates to:
-  /// **'Here are the Policies...'**
-  String get policiesContent;
 
   /// No description provided for @ok.
   ///

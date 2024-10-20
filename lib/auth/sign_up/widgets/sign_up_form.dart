@@ -31,15 +31,6 @@ class _SignUpFormState extends State<SignUpForm> {
     super.initState();
     _obscurePassword = ValueNotifier(true);
     _obscureConfirmPassword = ValueNotifier(true);
-
-    _termsOfServiceRecognizer = TapGestureRecognizer()
-      ..onTap = () {
-        _showTermsOfService(context);
-      };
-    _policiesRecognizer = TapGestureRecognizer()
-      ..onTap = () {
-        _showPolicies(context);
-      };
   }
 
   @override
@@ -210,35 +201,3 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 }
-
-void _showTermsOfService(BuildContext context) {
-    final l10n = context.l10n;
-    showModalBottomSheet<dynamic>(
-      context: context,
-      builder: (context) {
-        return Container(
-          padding: const EdgeInsets.all(AppSpacing.lg),
-          child: Text(
-            l10n.termsOfServiceContent,
-            style: ContentTextStyle.bodyText1,
-          ),
-        );
-      },
-    );
-  }
-
-  void _showPolicies(BuildContext context) {
-    final l10n = context.l10n;
-    showModalBottomSheet<dynamic>(
-      context: context,
-      builder: (context) {
-        return Container(
-          padding: const EdgeInsets.all(AppSpacing.lg),
-          child: Text(
-            l10n.policiesContent,
-            style: ContentTextStyle.bodyText1,
-          ),
-        );
-      },
-    );
-  }

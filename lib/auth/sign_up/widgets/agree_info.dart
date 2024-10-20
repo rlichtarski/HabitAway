@@ -38,7 +38,7 @@ class AgreeInfo extends StatelessWidget {
                           ? 'terms_and_conditions.md' 
                           : 'terms_and_conditions_pl.md',
                       typeOfDialogText: l10n.termsAndConditionsTitle,
-                    )
+                    ),
                   )
                   : showDialog<void>(
                     context: context, 
@@ -72,7 +72,7 @@ class AgreeInfo extends StatelessWidget {
                           ? 'privacy_policy.md' 
                           : 'privacy_policy_pl.md',
                       typeOfDialogText: l10n.privacyPolicyTitle,
-                    )
+                    ),
                   )
                   : showDialog<void>(
                     context: context, 

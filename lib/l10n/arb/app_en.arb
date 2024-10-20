@@ -17,11 +17,8 @@
     "signUp": "Sign up",
     "agreeToTermsPart1": "By signing up, you agree to our ",
     "agreeToTermsPart2": " and ",
-    "agreeToTermsPart3": ".",
     "termsOfService": "Terms of Service",
     "policies": "Policies",
-    "termsOfServiceContent": "Here are the Terms of Service...",
-    "policiesContent": "Here are the Policies...",
     "ok": "OK",
     "privacyPolicyTitle": "Privacy policy",
     "termsAndConditionsTitle": "Terms of Service"

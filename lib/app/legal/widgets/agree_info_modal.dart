@@ -59,7 +59,7 @@ class AgreeInfoModal extends StatelessWidget {
                         AppSpacing.lg,
                       ),
                       child: GestureDetector(
-                        onTap: () => Navigator.of(context).pop(),
+                        onTap: () => context.popNavigator,
                         child: const Icon(
                           Icons.close_fullscreen_outlined, 
                           size: 24,
